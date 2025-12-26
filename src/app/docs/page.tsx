@@ -61,7 +61,7 @@ export default function DocsHome() {
           </h2>
           <div className="space-y-4 text-muted-foreground dark:text-slate-400 leading-relaxed">
             <p className="text-lg">
-              XandNodes is the first of its kind <strong>Tactical Intelligence & Monitoring Command Center</strong>
+              XandNodes is the first of its kind <strong> Tactical Intelligence & Monitoring Command Center</strong>
               designed specifically for the Xandeum pNode Network.
             </p>
             <p>
