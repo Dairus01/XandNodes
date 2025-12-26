@@ -119,6 +119,7 @@ export function VersionDistribution({ nodes }: VersionDistributionProps) {
                     className="text-[10px] sm:text-xs"
                     stroke="currentColor"
                     tick={{ fontSize: 10 }}
+                    tickFormatter={(value) => value.length > 10 ? `${value.substring(0, 8)}...` : value}
                     interval={0}
                   />
                   <YAxis
@@ -133,7 +134,7 @@ export function VersionDistribution({ nodes }: VersionDistributionProps) {
                         const data = payload[0].payload;
                         return (
                           <div className="bg-popover p-3 sm:p-4 rounded-lg border border-border shadow-lg">
-                            <p className="font-semibold text-foreground text-sm">
+                            <p className="font-semibold text-foreground text-sm break-all">
                               {data.version}
                               {data.isLatest && (
                                 <Badge variant="default" className="ml-2 text-[10px]">
@@ -181,9 +182,9 @@ export function VersionDistribution({ nodes }: VersionDistributionProps) {
                     className={`w-3 h-3 rounded-full flex-shrink-0 ${isLatest ? 'bg-green-500' : percentage < 10 ? 'bg-red-500' : 'bg-indigo-500'
                       }`}
                   />
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-mono text-sm font-medium truncate">
+                      <span className="font-mono text-sm font-medium truncate max-w-[120px] xs:max-w-[180px] sm:max-w-none" title={version}>
                         {version}
                       </span>
                       {isLatest && (
