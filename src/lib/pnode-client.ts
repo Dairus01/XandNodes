@@ -630,6 +630,7 @@ export class PNodeClient {
     const totalStorage = mockNodes.reduce((sum, n) => sum + n.storage.total, 0);
     const usedStorage = mockNodes.reduce((sum, n) => sum + n.storage.used, 0);
     const avgUptime = mockNodes.reduce((sum, n) => sum + n.uptime, 0) / mockNodes.length;
+    const activeCountries = new Set(mockNodes.map(n => n.location.countryCode)).size;
 
     return {
       totalNodes: mockNodes.length,
@@ -642,6 +643,7 @@ export class PNodeClient {
       avgUptime,
       decentralizationScore: 75 + Math.random() * 20,
       networkVersion: 'v1.16.14-xandeum',
+      activeCountries,
       avgLatency: mockNodes.reduce((sum, n) => sum + n.performance.avgLatency, 0) / mockNodes.length,
       totalBandwidth: mockNodes.reduce((sum, n) => sum + n.performance.bandwidthMbps, 0),
     };
