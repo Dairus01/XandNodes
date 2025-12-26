@@ -178,3 +178,4 @@ We maintain a strict technical standard to ensure the "Command Center" remains a
   <b>Project XandNodes</b> • Built by Dairus01 for Xandeum Labs • December 2025<br>
   <i>Enabling Solana's Storage Future, One pNode at a Time.</i>
 </p>
+"# XandNodes" 
