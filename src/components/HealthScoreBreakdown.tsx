@@ -89,138 +89,138 @@ export function HealthScoreBreakdown({ health }: HealthScoreBreakdownProps) {
             </h4>
 
             {/* Uptime Health */}
-            <div className="p-4 bg-muted rounded-lg border border-border">
+            <div className="p-3 sm:p-4 bg-muted rounded-lg border border-border">
               <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium text-gray-900 dark:text-gray-50">Uptime Health</span>
-                  <Badge variant="secondary" className="text-xs">25% weight</Badge>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-medium text-gray-900 dark:text-gray-50 text-sm sm:text-base">Uptime Health</span>
+                  <Badge variant="secondary" className="text-[10px] sm:text-xs">25% weight</Badge>
                 </div>
-                <span className={`font-bold ${getScoreColor(uptimeHealth)}`}>
+                <span className={`font-bold ${getScoreColor(uptimeHealth)} text-sm sm:text-base`}>
                   {uptimeHealth.toFixed(0)}
                 </span>
               </div>
-              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm text-gray-600 dark:text-gray-400 gap-1 sm:gap-0">
                 <span>Average network uptime</span>
                 <span className="font-mono">× 0.25 = {(uptimeHealth * weights.uptime).toFixed(1)}</span>
               </div>
-              <div className="w-full bg-border rounded-full h-2 mt-2">
+              <div className="w-full bg-border rounded-full h-1.5 sm:h-2 mt-2">
                 <div
-                  className="bg-primary h-2 rounded-full transition-all"
+                  className="bg-primary h-1.5 sm:h-2 rounded-full transition-all"
                   style={{ width: `${uptimeHealth}%` }}
                 />
               </div>
             </div>
 
             {/* Availability */}
-            <div className="p-4 bg-muted rounded-lg border border-border">
+            <div className="p-3 sm:p-4 bg-muted rounded-lg border border-border">
               <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium text-gray-900 dark:text-gray-50">Availability</span>
-                  <Badge variant="secondary" className="text-xs">25% weight</Badge>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-medium text-gray-900 dark:text-gray-50 text-sm sm:text-base">Availability</span>
+                  <Badge variant="secondary" className="text-[10px] sm:text-xs">25% weight</Badge>
                 </div>
-                <span className={`font-bold ${getScoreColor(availability)}`}>
+                <span className={`font-bold ${getScoreColor(availability)} text-sm sm:text-base`}>
                   {availability.toFixed(0)}
                 </span>
               </div>
-              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                <span>Active nodes providing storage access</span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm text-gray-600 dark:text-gray-400 gap-1 sm:gap-0">
+                <span>Active nodes & storage</span>
                 <span className="font-mono">× 0.25 = {(availability * weights.availability).toFixed(1)}</span>
               </div>
-              <div className="w-full bg-border rounded-full h-2 mt-2">
+              <div className="w-full bg-border rounded-full h-1.5 sm:h-2 mt-2">
                 <div
-                  className="bg-primary h-2 rounded-full transition-all"
+                  className="bg-primary h-1.5 sm:h-2 rounded-full transition-all"
                   style={{ width: `${availability}%` }}
                 />
               </div>
             </div>
 
             {/* Performance */}
-            <div className="p-4 bg-muted rounded-lg border border-border">
+            <div className="p-3 sm:p-4 bg-muted rounded-lg border border-border">
               <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium text-gray-900 dark:text-gray-50">Performance</span>
-                  <Badge variant="secondary" className="text-xs">17% weight</Badge>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-medium text-gray-900 dark:text-gray-50 text-sm sm:text-base">Performance</span>
+                  <Badge variant="secondary" className="text-[10px] sm:text-xs">17% weight</Badge>
                 </div>
-                <span className={`font-bold ${getScoreColor(performanceHealth)}`}>
+                <span className={`font-bold ${getScoreColor(performanceHealth)} text-sm sm:text-base`}>
                   {performanceHealth.toFixed(0)}
                 </span>
               </div>
-              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                <span>Latency-based performance score</span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm text-gray-600 dark:text-gray-400 gap-1 sm:gap-0">
+                <span>Latency score</span>
                 <span className="font-mono">× 0.17 = {(performanceHealth * weights.performance).toFixed(1)}</span>
               </div>
-              <div className="w-full bg-border rounded-full h-2 mt-2">
+              <div className="w-full bg-border rounded-full h-1.5 sm:h-2 mt-2">
                 <div
-                  className="bg-primary h-2 rounded-full transition-all"
+                  className="bg-primary h-1.5 sm:h-2 rounded-full transition-all"
                   style={{ width: `${performanceHealth}%` }}
                 />
               </div>
             </div>
 
             {/* Version Health */}
-            <div className="p-4 bg-muted rounded-lg border border-border">
+            <div className="p-3 sm:p-4 bg-muted rounded-lg border border-border">
               <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium text-gray-900 dark:text-gray-50">Version Health</span>
-                  <Badge variant="secondary" className="text-xs">12.5% weight</Badge>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-medium text-gray-900 dark:text-gray-50 text-sm sm:text-base">Version Health</span>
+                  <Badge variant="secondary" className="text-[10px] sm:text-xs">12.5% weight</Badge>
                 </div>
-                <span className={`font-bold ${getScoreColor(versionHealth)}`}>
+                <span className={`font-bold ${getScoreColor(versionHealth)} text-sm sm:text-base`}>
                   {versionHealth.toFixed(0)}
                 </span>
               </div>
-              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                <span>Nodes on latest version</span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm text-gray-600 dark:text-gray-400 gap-1 sm:gap-0">
+                <span>Latest version nodes</span>
                 <span className="font-mono">× 0.125 = {(versionHealth * weights.version).toFixed(1)}</span>
               </div>
-              <div className="w-full bg-border rounded-full h-2 mt-2">
+              <div className="w-full bg-border rounded-full h-1.5 sm:h-2 mt-2">
                 <div
-                  className="bg-primary h-2 rounded-full transition-all"
+                  className="bg-primary h-1.5 sm:h-2 rounded-full transition-all"
                   style={{ width: `${versionHealth}%` }}
                 />
               </div>
             </div>
 
             {/* Storage Health */}
-            <div className="p-4 bg-muted rounded-lg border border-border">
+            <div className="p-3 sm:p-4 bg-muted rounded-lg border border-border">
               <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium text-gray-900 dark:text-gray-50">Storage Health</span>
-                  <Badge variant="secondary" className="text-xs">12.5% weight</Badge>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-medium text-gray-900 dark:text-gray-50 text-sm sm:text-base">Storage Health</span>
+                  <Badge variant="secondary" className="text-[10px] sm:text-xs">12.5% weight</Badge>
                 </div>
-                <span className={`font-bold ${getScoreColor(storageHealth)}`}>
+                <span className={`font-bold ${getScoreColor(storageHealth)} text-sm sm:text-base`}>
                   {storageHealth.toFixed(0)}
                 </span>
               </div>
-              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                <span>Optimal capacity utilization (60-80%)</span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm text-gray-600 dark:text-gray-400 gap-1 sm:gap-0">
+                <span>Capacity utilization</span>
                 <span className="font-mono">× 0.125 = {(storageHealth * weights.storage).toFixed(1)}</span>
               </div>
-              <div className="w-full bg-border rounded-full h-2 mt-2">
+              <div className="w-full bg-border rounded-full h-1.5 sm:h-2 mt-2">
                 <div
-                  className="bg-primary h-2 rounded-full transition-all"
+                  className="bg-primary h-1.5 sm:h-2 rounded-full transition-all"
                   style={{ width: `${storageHealth}%` }}
                 />
               </div>
             </div>
 
             {/* Distribution */}
-            <div className="p-4 bg-muted/50 rounded-lg border border-border">
+            <div className="p-3 sm:p-4 bg-muted/50 rounded-lg border border-border">
               <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium text-gray-900 dark:text-gray-50">Distribution</span>
-                  <Badge variant="secondary" className="text-xs">8% weight</Badge>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-medium text-gray-900 dark:text-gray-50 text-sm sm:text-base">Distribution</span>
+                  <Badge variant="secondary" className="text-[10px] sm:text-xs">8% weight</Badge>
                 </div>
-                <span className={`font-bold ${getScoreColor(distribution)}`}>
+                <span className={`font-bold ${getScoreColor(distribution)} text-sm sm:text-base`}>
                   {distribution.toFixed(0)}
                 </span>
               </div>
-              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                <span>Geographic diversity & decentralization</span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm text-gray-600 dark:text-gray-400 gap-1 sm:gap-0">
+                <span>Geographic diversity</span>
                 <span className="font-mono">× 0.08 = {(distribution * weights.distribution).toFixed(1)}</span>
               </div>
-              <div className="w-full bg-border rounded-full h-2 mt-2">
+              <div className="w-full bg-border rounded-full h-1.5 sm:h-2 mt-2">
                 <div
-                  className="bg-primary h-2 rounded-full transition-all"
+                  className="bg-primary h-1.5 sm:h-2 rounded-full transition-all"
                   style={{ width: `${distribution}%` }}
                 />
               </div>

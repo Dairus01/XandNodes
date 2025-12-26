@@ -78,7 +78,7 @@ export function VersionDistribution({ nodes }: VersionDistributionProps) {
           {/* Version Health Summary */}
           {/* Version Health Summary */}
           <div className="p-4 bg-gradient-to-r from-purple-500/5 to-blue-500/5 border border-purple-500/20 rounded-lg">
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between mb-2 gap-2">
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-gray-50">
                   Version Health
@@ -87,7 +87,7 @@ export function VersionDistribution({ nodes }: VersionDistributionProps) {
                   Nodes on latest version ({latestVersion})
                 </p>
               </div>
-              <div className={`text-4xl font-bold ${getHealthColor()}`}>
+              <div className={`text-3xl sm:text-4xl font-bold ${getHealthColor()}`}>
                 {versionHealthPercent.toFixed(0)}%
               </div>
             </div>
@@ -99,8 +99,8 @@ export function VersionDistribution({ nodes }: VersionDistributionProps) {
             </div>
             {outdatedNodes.length > 0 && (
               <p className="text-sm text-yellow-600 dark:text-yellow-400 mt-2 flex items-center gap-1">
-                <AlertTriangle className="h-4 w-4" />
-                {outdatedNodes.length} node{outdatedNodes.length !== 1 ? 's' : ''} need{outdatedNodes.length === 1 ? 's' : ''} upgrade
+                <AlertTriangle className="h-4 w-4 flex-shrink-0" />
+                <span>{outdatedNodes.length} node{outdatedNodes.length !== 1 ? 's' : ''} need{outdatedNodes.length === 1 ? 's' : ''} upgrade</span>
               </p>
             )}
           </div>
@@ -110,56 +110,60 @@ export function VersionDistribution({ nodes }: VersionDistributionProps) {
             <h4 className="font-semibold text-sm mb-3 text-gray-900 dark:text-gray-50">
               Version Breakdown:
             </h4>
-            <ResponsiveContainer width="100%" height={280}>
-              <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" className="stroke-gray-200 dark:stroke-gray-800" />
-                <XAxis
-                  dataKey="version"
-                  className="text-xs"
-                  stroke="currentColor"
-                  tick={{ fontSize: 12 }}
-                />
-                <YAxis
-                  className="text-xs"
-                  stroke="currentColor"
-                  tick={{ fontSize: 12 }}
-                />
-                <Tooltip
-                  content={({ active, payload }) => {
-                    if (active && payload && payload[0]) {
-                      const data = payload[0].payload;
-                      return (
-                        <div className="bg-popover p-4 rounded-lg border border-border shadow-lg">
-                          <p className="font-semibold text-foreground">
-                            {data.version}
-                            {data.isLatest && (
-                              <Badge variant="default" className="ml-2 text-xs">
-                                Latest
-                              </Badge>
-                            )}
-                          </p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                            {data.count} node{data.count !== 1 ? 's' : ''}
-                          </p>
-                          <p className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-                            {data.percentage.toFixed(1)}% of network
-                          </p>
-                        </div>
-                      );
-                    }
-                    return null;
-                  }}
-                />
-                <Bar dataKey="count" radius={[8, 8, 0, 0]}>
-                  {chartData.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={entry.isLatest ? '#10b981' : entry.percentage < 10 ? '#ef4444' : '#6366f1'}
-                    />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+            <div className="-ml-4 sm:ml-0">
+              <ResponsiveContainer width="100%" height={280}>
+                <BarChart data={chartData} margin={{ left: 0, right: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" className="stroke-gray-200 dark:stroke-gray-800" />
+                  <XAxis
+                    dataKey="version"
+                    className="text-[10px] sm:text-xs"
+                    stroke="currentColor"
+                    tick={{ fontSize: 10 }}
+                    interval={0}
+                  />
+                  <YAxis
+                    className="text-[10px] sm:text-xs"
+                    stroke="currentColor"
+                    tick={{ fontSize: 10 }}
+                    width={30}
+                  />
+                  <Tooltip
+                    content={({ active, payload }) => {
+                      if (active && payload && payload[0]) {
+                        const data = payload[0].payload;
+                        return (
+                          <div className="bg-popover p-3 sm:p-4 rounded-lg border border-border shadow-lg">
+                            <p className="font-semibold text-foreground text-sm">
+                              {data.version}
+                              {data.isLatest && (
+                                <Badge variant="default" className="ml-2 text-[10px]">
+                                  Latest
+                                </Badge>
+                              )}
+                            </p>
+                            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
+                              {data.count} node{data.count !== 1 ? 's' : ''}
+                            </p>
+                            <p className="text-xs sm:text-sm font-semibold text-purple-600 dark:text-purple-400">
+                              {data.percentage.toFixed(1)}% of network
+                            </p>
+                          </div>
+                        );
+                      }
+                      return null;
+                    }}
+                  />
+                  <Bar dataKey="count" radius={[4, 4, 0, 0]}>
+                    {chartData.map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={entry.isLatest ? '#10b981' : entry.percentage < 10 ? '#ef4444' : '#6366f1'}
+                      />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
 
           {/* Version List */}
@@ -172,32 +176,32 @@ export function VersionDistribution({ nodes }: VersionDistributionProps) {
                 key={version}
                 className="flex items-center justify-between p-3 bg-muted/50 border border-border/50 rounded-lg hover:bg-accent transition-colors"
               >
-                <div className="flex items-center gap-3 flex-1">
+                <div className="flex items-center gap-3 flex-1 overflow-hidden">
                   <div
-                    className={`w-3 h-3 rounded-full ${isLatest ? 'bg-green-500' : percentage < 10 ? 'bg-red-500' : 'bg-indigo-500'
+                    className={`w-3 h-3 rounded-full flex-shrink-0 ${isLatest ? 'bg-green-500' : percentage < 10 ? 'bg-red-500' : 'bg-indigo-500'
                       }`}
                   />
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-sm font-medium">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-mono text-sm font-medium truncate">
                         {version}
                       </span>
                       {isLatest && (
-                        <Badge variant="default" className="text-xs">
+                        <Badge variant="default" className="text-[10px]">
                           Current
                         </Badge>
                       )}
                       {!isLatest && percentage < 10 && (
-                        <Badge variant="destructive" className="text-xs">
+                        <Badge variant="destructive" className="text-[10px]">
                           Deprecated
                         </Badge>
                       )}
                     </div>
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="text-right ml-2 flex-shrink-0">
                   <p className="text-sm font-semibold">
-                    {count} node{count !== 1 ? 's' : ''}
+                    {count}
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
                     {percentage.toFixed(1)}%
@@ -210,19 +214,19 @@ export function VersionDistribution({ nodes }: VersionDistributionProps) {
           {/* Outdated Nodes Action */}
           {outdatedNodes.length > 0 && (
             <div className="p-4 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
-              <div className="flex items-start justify-between gap-3">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div className="flex-1">
                   <h4 className="font-semibold text-yellow-900 dark:text-yellow-100 flex items-center gap-2">
-                    <AlertTriangle className="h-4 w-4" />
+                    <AlertTriangle className="h-4 w-4 flex-shrink-0" />
                     Upgrade Recommended
                   </h4>
                   <p className="text-sm text-yellow-700 dark:text-yellow-300 mt-1">
-                    {outdatedNodes.length} pNode{outdatedNodes.length !== 1 ? 's are' : ' is'} running outdated version{outdatedNodes.length !== 1 ? 's' : ''}.
-                    Upgrade to {latestVersion} for latest features and security patches.
+                    {outdatedNodes.length} pNode{outdatedNodes.length !== 1 ? 's are' : ' is'} outdated.
+                    Upgrade to {latestVersion}.
                   </p>
                 </div>
-                <Link href="/nodes">
-                  <Button variant="outline" size="sm" className="flex-shrink-0">
+                <Link href="/nodes" className="w-full sm:w-auto">
+                  <Button variant="outline" size="sm" className="w-full sm:w-auto flex-shrink-0">
                     View Nodes
                     <ChevronRight className="h-4 w-4 ml-1" />
                   </Button>
@@ -234,12 +238,12 @@ export function VersionDistribution({ nodes }: VersionDistributionProps) {
           {/* Network Synchronization Status */}
           {versionHealthPercent === 100 ? (
             <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/20">
-              <div className="flex items-center gap-2 text-green-900 dark:text-green-100">
-                <CheckCircle className="h-5 w-5 text-green-500" />
+              <div className="flex items-start gap-2 text-green-900 dark:text-green-100">
+                <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold">Perfect Network Synchronization</h4>
+                  <h4 className="font-semibold">Perfect Synchronization</h4>
                   <p className="text-sm text-green-700 dark:text-green-300">
-                    All pNodes running {latestVersion}. Network is fully compatible and synchronized.
+                    All pNodes are running {latestVersion}.
                   </p>
                 </div>
               </div>
