@@ -17,135 +17,124 @@
 ---
 
 ## ⚡ Mission Briefing
-**XandNodes** is a state-of-the-art telemetry and intelligence platform designed for the Xandeum decentralized storage network. It translates raw pRPC gossip data from distributed pNodes into actionable, high-fidelity insights through a "Digital Bioluminescence" interface.
+**XandNodes** is a high-fidelity monitoring and intelligence platform purpose-built for the Xandeum decentralized storage network. In the pursuit of exabyte-scale storage for Solana, the network requires professional-grade observability. XandNodes fulfills this by aggregating pRPC gossip data from distributed pNodes into a unified "Digital Bioluminescence" interface.
 
 ### 🛡️ Operational Status: **ACTIVE**
-Monitoring **8 High-Priority Endpoints** with integrated circuit-breaker resilience and parallel data ingestion.
+The platform currently monitors **8 verified Xandeum pRPC endpoints** (Port 6000) using a high-concurrency ingestion engine equipped with circuit-breaker protection.
 
 ---
 
-## 🏗️ Tactical Capabilities
+## 🏗️ Technical Architecture & Capabilities
 
-<table width="100%">
-  <tr>
-    <td width="50%" valign="top">
-      <h4>📡 Real-Time Surveillance</h4>
-      <ul>
-        <li><b>Live Data Ingestion</b>: Sub-second monitoring of 8 pRPC endpoints.</li>
-        <li><b>Parallel Processing</b>: Simultaneous querying for maximum throughput.</li>
-        <li><b>Circuit-Breaker Logic</b>: Automatic isolation of failing infrastructure.</li>
-      </ul>
-    </td>
-    <td width="50%" valign="top">
-      <h4>🧬 Intelligence Layer</h4>
-      <ul>
-        <li><b>Weighted Scoring</b>: A-F grading optimized for storage networks.</li>
-        <li><b>Risk Assessment</b>: Instant detection of capacity/uptime vectors.</li>
-        <li><b>Bioluminescent UI</b>: Glassmorphic maps and interactive HUDs.</li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h4>🌍 Geopolitical Mapping</h4>
-      <ul>
-        <li><b>Global Topology</b>: Interactive plotting of all active node locations.</li>
-        <li><b>Provider Diversity</b>: Real-time tracking of country-level distribution.</li>
-        <li><b>Latency Heatmaps</b>: Regional performance profiles for edge analysis.</li>
-      </ul>
-    </td>
-    <td width="50%" valign="top">
-      <h4>📦 Exabyte Scalability</h4>
-      <ul>
-        <li><b>Capacity Projection</b>: Monitoring network growth milestones.</li>
-        <li><b>Data Export</b>: Industrial-grade CSV/JSON extraction for analysts.</li>
-        <li><b>Version Audits</b>: Tracking software synchronization lifecycle.</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+XandNodes is built on a "Resilience-First" architecture, ensuring that the dashboard remains responsive even when parts of the decentralized network are suffering from high latency or downtime.
+
+### **1. Resilience & Ingestion Layer**
+*   **Parallel Querying**: Instead of sequential requests, XandNodes queries all target pRPC endpoints simultaneously.
+*   **Circuit Breaker Pattern**: If an endpoint fails or exceeds the 5-second timeout, the platform automatically flags it and bypasses it in subsequent cycles to prevent UI "locking."
+*   **Fail-Fast Ingestion**: We prioritize data freshness over completion. If 6/8 nodes report on time, the dashboard renders immediately.
+
+### **2. The Insight Engine**
+The platform features a logic-based "Intelligence Layer" that analyzes raw stats to generate tactical events:
+*   **Capacity Milestones**: Alerts when the network hits significant storage thresholds.
+*   **Risk Categorization**: Automatically groups nodes into "Critical," "Warning," or "Healthy" vectors based on storage saturation and uptime.
+*   **Version Drift Detection**: Identifies nodes running outdated software and calculates the network'sUpgrade Funnel.
 
 ---
 
-## 🚀 Deployment Protocol
+## 📊 Precision Health Scoring (v2.0)
 
-### **1. Environment Synchronization**
+XandNodes utilizes a sophisticated 6-component scoring algorithm weighted specifically for a storage-centric decentralized network.
+
+| Component | Weight | Target Threshold | Logic Description |
+| :--- | :--- | :--- | :--- |
+| **Uptime Health** | 25% | >99% | Exponential growth curve based on continuous operation minutes. |
+| **Availability** | 25% | 100% | Real-time check of active status across the pNode gossip fleet. |
+| **Performance** | 17% | <100ms | Dynamic score degradation based on pRPC response latency. |
+| **Version Health** | 12.5% | Latest | Measures alignment with the current network-wide protocol version. |
+| **Storage Health** | 12.5% | 60-80% | Incentivizes active storage without hitting critical capacity (95%+). |
+| **Distribution** | 8.0% | Global | Geographic diversity score to ensure network fault tolerance. |
+
+*Note: All scores are normalized and clamped between 0 and 100 for consistent grading.*
+
+---
+
+## 🚀 Deployment & Local Protocol
+
+### **1. Hardware Requirements**
+*   **CPU**: 2+ Cores (for parallel data processing)
+*   **RAM**: 4GB+ (for local build optimization)
+*   **Node.js**: v20.x or higher
+
+### **2. Quick Start**
 ```bash
+# Clone the tactical repository
 git clone https://github.com/Dairus01/XandNodes.git
 cd XandNodes
-```
 
-### **2. Dependencies Ingestion**
-```bash
+# Install the Next.js/React 19 ecosystem
 npm install
-```
 
-### **3. Operational Launch**
-```bash
+# Start the Command Center in Development Mode
 npm run dev
 ```
-> **Access link established at**: `http://localhost:3000`
 
----
+### **3. Production Uplink**
+```bash
+# Generate optimized static and server-side assets
+npm run build
 
-## 📐 Network Architecture
-
-### **Core Stack**
-*   **Engine**: Next.js 16.1 (App Router Architecture)
-*   **State**: TanStack React Query v5 (Smart Caching Layer)
-*   **Styling**: Tailwind CSS 4.0 (Digital Bioluminescence Theme)
-*   **Visuals**: Recharts 3 + Framer Motion (Dynamic Pulse)
-
-### **Data Flow Pipeline**
-```mermaid
-graph LR
-    A[Client Browser] --> B[React Query Hook]
-    B --> C[PNodeClient]
-    C --> D{Circuit Breaker}
-    D -- Healthy --> E[8 pRPC Endpoints]
-    D -- Failing --> F[Bypassed Endpoint]
-    E --> G[Data Transform]
-    G --> H[60s Cache]
-    H --> B
+# Launch production server
+npm run start
 ```
 
 ---
 
-## 📊 Health Scoring Formula (v1.0)
-Xandeum network health is calculated using a storage-priority algorithm:
+## 📐 Command Center Data Flow
 
-| Component | Weight | Target Metric |
-| :--- | :--- | :--- |
-| **Storage Health** | 30% | 60-80% Capacity Utilization |
-| **Availability** | 30% | Active Response Percentage |
-| **Version Health** | 25% | Synchronized Software Status |
-| **Distribution** | 15% | Geographic Fault Tolerance |
+XandNodes uses a smart-caching pipeline to minimize network stress while ensuring data accuracy.
+
+```mermaid
+graph TD
+    User([User Ingress]) --> UI[Dashboard UI]
+    UI --> Hooks[TanStack Query Hooks]
+    Hooks --> Cache{60s Stale Cache?}
+    Cache -- HIT --> UI
+    Cache -- MISS --> Client[PNodeClient]
+    Client --> CB{Circuit Breakers}
+    CB --> RPC1[pRPC Endpoint 1]
+    CB --> RPC2[pRPC Endpoint 2]
+    CB --> RPCN[pRPC Endpoint N]
+    RPC1 & RPC2 & RPCN --> Agg[Data Aggregator]
+    Agg --> Transform[PNode Normalization]
+    Transform --> Hooks
+```
 
 ---
 
 ## 🧪 Operational Data Schema
-The platform standardizes raw pRPC output into the following tactical schema:
+
+Every node in the network is transformed into a standardized `PNode` tactical object for analytics:
 
 ```typescript
 interface PNode {
-  publicKey: string;
-  moniker: string;
+  publicKey: string;      // Unique Solana identifier
+  moniker: string;        // Human-readable node name
   status: 'active' | 'inactive' | 'syncing';
-  uptime: number;
-  healthScore: number;
+  uptime: number;         // Historical reliability percentage
+  healthScore: number;    // Calculated 0-100 composite
   storage: {
-    used: number;
-    total: number;
+    used: number;         // Bytes stored
+    total: number;        // Capacity
     usagePercentage: number;
   };
   performance: {
-    avgLatency: number;
-    successRate: number;
+    avgLatency: number;   // In Milliseconds
+    successRate: number;  // 0.0 - 1.0 reliability
   };
   location: {
-    country: string;
+    country: string;      // Geo-resolved entity
     city: string;
-    lat: number;
+    lat: number;          // Visual plotting coordinate
     lng: number;
   };
 }
@@ -153,27 +142,39 @@ interface PNode {
 
 ---
 
-## 📂 Command Structure
+## 📂 Command Structure & Directory Map
+
 ```bash
 src/
-├── app/          # Tactical Routing & Documentation
-├── components/   # Visual Interface Subsystems
-├── lib/          # Intelligence & Client Logic
-├── types/        # Operational Data Schemas
-└── public/       # Static Mission Assets
+├── app/                  # Next.js App Router (Routing Layer)
+│   ├── api/             # pRPC Proxy and Data Ingestion logic
+│   ├── docs/            # Comprehensive platform documentation
+│   └── nodes/           # Node Explorer and specific pNode profiles
+├── components/           # UI Subsystems
+│   ├── ui/              # Shadcn/Radix primitive components
+│   ├── GlassCard.tsx    # Premium themed wrapper
+│   └── NetworkPulse.tsx # Real-time Recharts visualizations
+├── lib/                  # Tactical Logic
+│   ├── pnode-client.ts  # Parallel ingestion & Circuit Breakers
+│   ├── intelligence.ts  # Health Scoring & Insight Engine
+│   └── hooks.ts         # Server-state management (React Query)
+└── types/                # Strict Type Definitions
 ```
 
 ---
 
-## 🤝 Contribution Guidelines
-Operational improvements are welcome.
-1. Fork the operational branch.
-2. Implement tactical upgrades (Follow Tailwind/TS strict guidelines).
-3. Open a Pull Request for code review.
+## 🛠️ Operational Guidelines & Contributions
+
+We maintain a strict technical standard to ensure the "Command Center" remains a production-grade tool.
+
+1.  **Strict Typing**: No `any` types allowed in the core analytics logic.
+2.  **Theme Compliance**: All new components must use the "Digital Bioluminescence" CSS variables.
+3.  **Atomic Commits**: Ensure each PR addresses a specific tactical goal (e.g., "feat: add latency heatmap").
+4.  **No Emojis in Code**: Keep the codebase professional. Emojis are reserved for the README and documentation UI.
 
 ---
 
 <p align="center">
-  <b>Project XandNodes</b> • Built by XandNodes Team • December 2025<br>
-  <i>Empowering the Solana Exabyte Storage Mission.</i>
+  <b>Project XandNodes</b> • Built by Dairus01 for Xandeum Labs • December 2025<br>
+  <i>Enabling Solana's Storage Future, One pNode at a Time.</i>
 </p>
