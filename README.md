@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌌 XandNodes
+# <img src="./public/logo.png" width="40" valign="middle"> XandNodes
 ### **The Xandeum Command Center**
 *Professional-Grade pNode Network Analytics & Real-Time Intelligence*
 
