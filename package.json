@@ -1,0 +1,42 @@
+{
+  "name": "xandnodes",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.98.4",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@tanstack/react-query": "^5.90.12",
+    "@types/leaflet": "^1.9.21",
+    "axios": "^1.13.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.26",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.556.0",
+    "next": "^16.1.0",
+    "next-themes": "^0.4.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-globe.gl": "^2.37.0",
+    "react-leaflet": "^5.0.0",
+    "recharts": "^3.5.1",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4",
+    "three": "^0.182.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^16.1.0",
+    "typescript": "^5"
+  }
+}
