@@ -53,11 +53,11 @@ export const NetworkStatsDisplay = memo(function NetworkStatsDisplay({ stats }: 
   ];
 
   return (
-    <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+    <div className="grid gap-2 sm:gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
       {statCards.map((stat) => {
         const Icon = stat.icon;
         return (
-          <Card key={stat.title} className="relative overflow-hidden">
+          <Card key={stat.title} className="relative overflow-hidden bg-card/50 backdrop-blur-sm border-border/50">
             {stat.pulse && (
               <div className="absolute top-2 right-2">
                 <div className="relative">

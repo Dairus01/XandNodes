@@ -92,21 +92,23 @@ export default function Home() {
 
         {/* Interactive 2D Network Map */}
         {nodes && (
-          <section className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <NetworkMap nodes={nodes} />
+          <section className="mb-6 sm:mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <div className="h-[350px] sm:h-[450px] lg:h-[600px] w-full">
+              <NetworkMap nodes={nodes} />
+            </div>
           </section>
         )}
 
         {/* Network Health Grade - Hero Section */}
         {!isLoading && stats && (
           <section className="mb-6 sm:mb-8">
-            <div className="grid gap-4 sm:gap-6 lg:grid-cols-4">
-              <div className="lg:col-span-1">
+            <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <div className="md:col-span-1">
                 <NetworkHealthGrade stats={stats} />
               </div>
-              <div className="lg:col-span-3">
+              <div className="md:col-span-1 lg:col-span-3">
                 <div className="h-full flex flex-col justify-center">
-                  <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">
+                  <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-3 sm:mb-4 text-foreground">
                     Network Overview
                   </h2>
                   <NetworkStatsDisplay stats={stats} />
@@ -205,46 +207,46 @@ export default function Home() {
         )}
 
         {/* Additional Info - Redesigned to match screenshot */}
-        <section className="mt-12 sm:mt-20">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground/90">
+        <section className="mt-12 sm:mt-16 lg:mt-20">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 text-foreground/90">
             About Xandeum pNodes
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground mb-10 max-w-5xl leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-6 sm:mb-10 max-w-4xl leading-relaxed">
             Xandeum pNodes are decentralized storage provider nodes that form the backbone Xandeum layer.
             Each pNode contributes storage capacity, bandwidth, and compute power to create a resilient,
             high performance storage network.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Decentralized Card */}
-            <div className="bg-card/30 backdrop-blur-sm p-8 rounded-2xl border border-border/50 hover:border-primary/30 transition-all duration-300">
-              <div className="mb-6 h-14 w-14 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
-                <Globe2 className="h-8 w-8 text-blue-500" />
+            <div className="bg-card/30 backdrop-blur-sm p-5 sm:p-8 rounded-2xl border border-border/50 hover:border-primary/30 transition-all duration-300">
+              <div className="mb-4 sm:mb-6 h-10 w-10 sm:h-14 sm:w-14 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                <Globe2 className="h-6 w-6 sm:h-8 sm:w-8 text-blue-500" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-foreground">Decentralized</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-foreground">Decentralized</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 Distributed globally across multiple countries and regions.
               </p>
             </div>
 
             {/* High Performance Card */}
-            <div className="bg-card/30 backdrop-blur-sm p-8 rounded-2xl border border-border/50 hover:border-secondary/30 transition-all duration-300">
-              <div className="mb-6 h-14 w-14 rounded-full bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
-                <Gauge className="h-8 w-8 text-cyan-500" />
+            <div className="bg-card/30 backdrop-blur-sm p-5 sm:p-8 rounded-2xl border border-border/50 hover:border-secondary/30 transition-all duration-300">
+              <div className="mb-4 sm:mb-6 h-10 w-10 sm:h-14 sm:w-14 rounded-full bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                <Gauge className="h-6 w-6 sm:h-8 sm:w-8 text-cyan-500" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-foreground">High Performance</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-foreground">High Performance</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 Low latency and high bandwidth for fast data access.
               </p>
             </div>
 
             {/* Scalable Card */}
-            <div className="bg-card/30 backdrop-blur-sm p-8 rounded-2xl border border-border/50 hover:border-accent/30 transition-all duration-300">
-              <div className="mb-6 h-14 w-14 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
-                <TrendingUp className="h-8 w-8 text-emerald-500" />
+            <div className="bg-card/30 backdrop-blur-sm p-5 sm:p-8 rounded-2xl border border-border/50 hover:border-accent/30 transition-all duration-300 sm:col-span-2 lg:col-span-1">
+              <div className="mb-4 sm:mb-6 h-10 w-10 sm:h-14 sm:w-14 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-500" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-foreground">Scalable</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-foreground">Scalable</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 Growing capacity to exabyte-scale storage.
               </p>
             </div>

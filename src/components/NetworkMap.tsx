@@ -155,12 +155,12 @@ function ActiveNodeOverlay({ node, onClose }: { node: PNode | null, onClose: () 
                                 <div className="text-[10px] text-slate-500 font-mono uppercase tracking-widest mb-1">
                                     Status
                                 </div>
-                                <Badge variant="outline" className={`${node.status === 'active' ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500/50' :
+                                <span className={`${node.status === 'active' ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500/50' :
                                     node.status === 'syncing' ? 'bg-yellow-500/10 text-yellow-400 border-yellow-500/50' :
                                         'bg-red-500/10 text-red-400 border-red-500/50'
-                                    } uppercase text-[10px] tracking-wider px-2 py-0.5`}>
+                                    } inline-block border rounded uppercase text-[10px] tracking-wider px-2 py-0.5`}>
                                     {node.status}
-                                </Badge>
+                                </span>
                             </div>
                         </div>
 
@@ -223,33 +223,33 @@ export function NetworkMap({ nodes }: NetworkMapProps) {
         <Card className="relative overflow-hidden border-border dark:border-cyan-500/20 bg-card dark:bg-slate-950 shadow-2xl h-[600px] group">
 
             {/* UI Overlays */}
-            <div className="absolute top-4 left-4 z-[500] flex flex-col gap-2 pointer-events-none">
-                <Card className="bg-background/90 dark:bg-black/90 backdrop-blur-md border-border dark:border-white/10 p-3 w-[200px] pointer-events-auto shadow-xl dark:shadow-2xl">
-                    <h3 className="text-xs font-semibold text-muted-foreground dark:text-slate-400 uppercase tracking-wider mb-2">Node Status</h3>
-                    <div className="space-y-2">
-                        <div className="flex items-center justify-between text-xs">
-                            <div className="flex items-center gap-2 text-foreground dark:text-slate-200">
-                                <span className="w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_8px_cyan]"></span>
+            <div className="absolute top-4 left-4 z-[500] flex flex-col gap-2 pointer-events-none max-w-[calc(100%-2rem)]">
+                <Card className="bg-background/90 dark:bg-black/90 backdrop-blur-md border-border dark:border-white/10 p-2 sm:p-3 w-[140px] sm:w-[200px] pointer-events-auto shadow-xl dark:shadow-2xl">
+                    <h3 className="text-[10px] sm:text-xs font-semibold text-muted-foreground dark:text-slate-400 uppercase tracking-wider mb-1 sm:mb-2">Node Status</h3>
+                    <div className="space-y-1 sm:space-y-2">
+                        <div className="flex items-center justify-between text-[10px] sm:text-xs">
+                            <div className="flex items-center gap-1.5 sm:gap-2 text-foreground dark:text-slate-200">
+                                <span className="w-1.5 h-1.5 sm:w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_8px_cyan]"></span>
                                 Online
                             </div>
                             <span className="font-mono text-cyan-600 dark:text-cyan-500">{activeNodesCount}</span>
                         </div>
-                        <div className="flex items-center justify-between text-xs">
-                            <div className="flex items-center gap-2 text-foreground dark:text-slate-200">
-                                <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
+                        <div className="flex items-center justify-between text-[10px] sm:text-xs">
+                            <div className="flex items-center gap-1.5 sm:gap-2 text-foreground dark:text-slate-200">
+                                <span className="w-1.5 h-1.5 sm:w-2 h-2 rounded-full bg-yellow-500"></span>
                                 Syncing
                             </div>
                             <span className="font-mono text-yellow-600 dark:text-yellow-500">{nodes.filter(n => n.status === 'syncing').length}</span>
                         </div>
-                        <div className="flex items-center justify-between text-xs">
-                            <div className="flex items-center gap-2 text-foreground dark:text-slate-200">
-                                <span className="w-2 h-2 rounded-full bg-red-500"></span>
+                        <div className="flex items-center justify-between text-[10px] sm:text-xs">
+                            <div className="flex items-center gap-1.5 sm:gap-2 text-foreground dark:text-slate-200">
+                                <span className="w-1.5 h-1.5 sm:w-2 h-2 rounded-full bg-red-500"></span>
                                 Offline
                             </div>
                             <span className="font-mono text-red-600 dark:text-red-500">{nodes.filter(n => n.status === 'inactive').length}</span>
                         </div>
                     </div>
-                    <div className="mt-3 pt-2 border-t border-border dark:border-white/10 text-[10px] text-muted-foreground dark:text-slate-500">
+                    <div className="mt-2 sm:mt-3 pt-1.5 sm:pt-2 border-t border-border dark:border-white/10 text-[9px] sm:text-[10px] text-muted-foreground dark:text-slate-500">
                         {nodes.length} nodes visible
                     </div>
                 </Card>
@@ -259,7 +259,7 @@ export function NetworkMap({ nodes }: NetworkMapProps) {
             <MapContainer
                 center={[20, 0]}
                 zoom={2.5}
-                minZoom={2}
+                minZoom={1.5}
                 maxZoom={12}
                 scrollWheelZoom={true}
                 zoomControl={false}
@@ -283,15 +283,15 @@ export function NetworkMap({ nodes }: NetworkMapProps) {
             </MapContainer>
 
             {/* Global Search Overlay */}
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[500] w-full max-w-md px-4 pointer-events-none">
+            <div className="absolute bottom-4 sm:top-4 left-1/2 -translate-x-1/2 z-[500] w-full max-w-sm sm:max-w-md px-4 pointer-events-none">
                 <div className="relative group pointer-events-auto">
                     <div className="absolute inset-0 bg-cyan-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
-                    <div className="relative flex items-center bg-background/80 dark:bg-black/80 backdrop-blur-md border border-border dark:border-white/15 rounded-full px-4 py-2.5 shadow-2xl transition-all group-hover:border-primary/30 dark:group-hover:border-white/30">
-                        <Search className="w-4 h-4 text-muted-foreground dark:text-slate-400 mr-3" />
+                    <div className="relative flex items-center bg-background/80 dark:bg-black/80 backdrop-blur-md border border-border dark:border-white/15 rounded-full px-4 py-2 sm:py-2.5 shadow-2xl transition-all group-hover:border-primary/30 dark:group-hover:border-white/30">
+                        <Search className="w-3.5 h-3.5 sm:w-4 h-4 text-muted-foreground dark:text-slate-400 mr-2 sm:mr-3" />
                         <input
                             type="text"
-                            placeholder="Search nodes by pubkey, address, or location..."
-                            className="bg-transparent border-none outline-none text-foreground dark:text-slate-200 placeholder:text-muted-foreground dark:placeholder:text-slate-500 text-xs sm:text-sm w-full font-mono"
+                            placeholder="Search nodes..."
+                            className="bg-transparent border-none outline-none text-foreground dark:text-slate-200 placeholder:text-muted-foreground dark:placeholder:text-slate-500 text-[11px] sm:text-sm w-full font-mono"
                         />
                     </div>
                 </div>
